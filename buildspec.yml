@@ -1,0 +1,32 @@
+version: 0.2
+
+phases:
+  install:
+    on-failure: ABORT
+    commands:
+      - command
+      - command
+    finally:
+      - command
+      - command
+  pre_build:
+    on-failure: ABORT
+    commands:
+      - command
+      - command
+    finally:
+      - command
+      - command
+  build:
+    on-failure: ABORT
+    commands:
+      - docker build -t laravel-coverage .
+  post_build:
+    on-failure: ABORT
+    commands:
+      - docker run --rm laravel-coverage php artisan test --coverage --coverage-xml coverage.xml
+reports:
+  laravel-coverage:
+    files:
+      - coverage.xml
+    file-format: CLOVERXML
