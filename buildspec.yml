@@ -1,22 +1,6 @@
 version: 0.2
 
 phases:
-  install:
-    on-failure: ABORT
-    commands:
-      - command
-      - command
-    finally:
-      - command
-      - command
-  pre_build:
-    on-failure: ABORT
-    commands:
-      - command
-      - command
-    finally:
-      - command
-      - command
   build:
     on-failure: ABORT
     commands:
@@ -24,7 +8,8 @@ phases:
   post_build:
     on-failure: ABORT
     commands:
-      - docker run --rm laravel-coverage php artisan test --coverage --coverage-xml coverage.xml
+      - docker run --rm --volume $PWD/coverage:/var/www/html/coverage
+        laravel-coverage php artisan test --coverage --coverage-xml coverage.xml
 reports:
   laravel-coverage:
     files:
