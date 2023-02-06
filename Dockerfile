@@ -14,3 +14,5 @@ RUN echo 'xdebug.mode=develop,debug,coverage' >> /usr/local/etc/php/conf.d/99-xd
 COPY . /var/www/html
 
 RUN composer install
+
+RUN cp .env.example .env
