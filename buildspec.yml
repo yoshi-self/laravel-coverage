@@ -13,6 +13,6 @@ phases:
 reports:
   laravel-coverage:
     files:
-      - coverage.xml
-    base-directory: coverage-clover
+      - coverage-clover/coverage.xml
     file-format: CLOVERXML
+    discard-paths: yes
