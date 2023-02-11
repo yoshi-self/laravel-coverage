@@ -14,5 +14,5 @@ phases:
 reports:
   laravel-coverage:
     files:
-      - coverage-clover
+      - coverage-clover/*
     file-format: CLOVERXML
