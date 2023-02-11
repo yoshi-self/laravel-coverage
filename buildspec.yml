@@ -8,11 +8,11 @@ phases:
   post_build:
     on-failure: ABORT
     commands:
-      - docker run --rm --volume $PWD/coverage-clover:/var/www/html/coverage-clover
-        laravel-coverage ash -c "php artisan key:generate && php artisan test --coverage-clover coverage-clover/coverage.xml"
+      - docker run --rm --volume $PWD/coverage:/var/www/html/coverage
+        laravel-coverage ash -c "php artisan key:generate && php artisan test --coverage-cobertura coverage/coverage.xml"
       - ls -al
 reports:
   laravel-coverage:
     files:
-      - coverage-clover/coverage.xml
-    file-format: CLOVERXML
+      - coverage/coverage.xml
+    file-format: COBERTURAXML
