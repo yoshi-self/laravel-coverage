@@ -8,7 +8,7 @@ phases:
   post_build:
     on-failure: ABORT
     commands:
-      - docker run --rm --volume $PWD/coverage:/var/www/html/coverage
+      - docker run --rm --volume $PWD/coverage-clover:/var/www/html/coverage-clover
         laravel-coverage ash -c "php artisan key:generate && php artisan test --coverage --coverage-xml coverage-clover/coverage.xml"
 reports:
   laravel-coverage:
