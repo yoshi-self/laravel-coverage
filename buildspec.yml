@@ -9,10 +9,10 @@ phases:
     on-failure: ABORT
     commands:
       - docker run --rm --volume $PWD/coverage-clover:/var/www/html/coverage-clover
-        laravel-coverage ash -c "php artisan key:generate && php artisan test --coverage --coverage-xml coverage-clover"
+        laravel-coverage ash -c "php artisan key:generate && php artisan test --coverage-clover coverage-clover/coverage.xml"
       - ls -al
 reports:
   laravel-coverage:
     files:
-      - coverage-clover/*
+      - coverage-clover/coverage.xml
     file-format: CLOVERXML
